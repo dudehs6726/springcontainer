@@ -3,8 +3,6 @@ package Config.soundsystem;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import com.douzone.springcontainer.videosystem.Index;
-
 @Configuration
 @ComponentScan(basePackages="com.douzone.springcontainer.soundsystem")
 //@ComponentScan(basePackages= {"com.douzone.springcontainer.soundsystem", "com.douzone.springcontainer.videosystem"});

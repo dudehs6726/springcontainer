@@ -1,8 +1,9 @@
 package com.douzone.springcontainer.soundsystem;
 
-import org.springframework.stereotype.Component;
+import javax.inject.Named;
 
-@Component
+//@Component("blueBlood")
+@Named("blueBlood")
 public class BlueBlood implements CompactDisc {
 
 	private String title = "Endless Rain";
