@@ -7,17 +7,18 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.douzone.springcontainer.soundsystem.CDPlayer;
 import com.douzone.springcontainer.soundsystem.CompactDisc;
 import com.douzone.springcontainer.videosystem.Avengers;
+import com.douzone.springcontainer.videosystem.DVDPack;
 import com.douzone.springcontainer.videosystem.DVDPlayer;
 import com.douzone.springcontainer.videosystem.DigitalVideoDisc;
 
 public class XMLConfigTest {
 
 	public static void main(String[] args) {
-		testXMLConfig01();
-		//testXMLConfig02();
+		//testXMLConfig01();
+		testXMLConfig02();
 	}
 	
-	//XML COnfig01
+	//XML Config01
 	//annotation config
 	public static void testXMLConfig01() {
 		ApplicationContext appCtx = new ClassPathXmlApplicationContext("config/soundsystem/CDPlayerConfig.xml");
@@ -31,7 +32,7 @@ public class XMLConfigTest {
 		((ConfigurableApplicationContext)appCtx).close();
 	}
 	
-	//XML COnfig01
+	//XML Config02
 	//bean config
 	public static void testXMLConfig02() {
 		ApplicationContext appCtx = new ClassPathXmlApplicationContext("config/videosystem/DVDPlayerConfig.xml");
@@ -41,6 +42,9 @@ public class XMLConfigTest {
 		
 		dvd = (DigitalVideoDisc)appCtx.getBean("digitalVideoDisc");
 		System.out.println(dvd);
+		
+		DVDPack dvdPack = appCtx.getBean(DVDPack.class);
+		System.out.println(dvdPack);
 		
 		DVDPlayer dvdPlayer = appCtx.getBean(DVDPlayer.class);
 		dvdPlayer.play();
