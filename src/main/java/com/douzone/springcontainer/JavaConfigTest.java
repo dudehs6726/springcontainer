@@ -10,6 +10,8 @@ import com.douzone.springcontainer.user.User;
 import com.douzone.springcontainer.videosystem.DVDPlayer;
 import com.douzone.springcontainer.videosystem.DigitalVideoDisc;
 
+import Config.mixing.videosystem.DVDPlayerConfig;
+import Config.mixing.videosystem.VideoSystemConfig;
 import Config.user.AppConfig01;
 
 public class JavaConfigTest {
@@ -18,7 +20,9 @@ public class JavaConfigTest {
 		//testJavaConfig01();
 		//testJavaConfig02();
 		//testJavaConfig03();
-		testJavaConfig04();
+		//testJavaConfig04();
+		testJavaConfig05();
+		testJavaConfig06();
 	}
 	
 	// Java Config 01
@@ -45,7 +49,7 @@ public class JavaConfigTest {
 		((ConfigurableApplicationContext)appCtx).close();
 	}
 	
-	// Java Config 03
+	// Java Config 03 - 자동설정
 	// component Scanning(@component, @Autowired)
 	// 설정 자바 클래스에 @Configuration 반드시 필요하다.
 	public static void testJavaConfig03() {
@@ -63,7 +67,7 @@ public class JavaConfigTest {
 		((ConfigurableApplicationContext)appCtx).close();
 	}
 	
-	// Java Config 04
+	// Java Config 04 - 명시적 설정
 	// ComponentScan를 사용하지 않음
 	// Java Config Class의 메소드와 @Bean를 사용
 	public static void testJavaConfig04() {
@@ -79,6 +83,40 @@ public class JavaConfigTest {
 //		dvdPlayer.play();
 		
 		((ConfigurableApplicationContext)appCtx).close();
+	}
+	
+	// Java Config 05 - mixing 01
+	// Java Config <- Java Config
+	public static void testJavaConfig05() {
+		ApplicationContext appCtx = new AnnotationConfigApplicationContext(DVDPlayerConfig.class);
+		
+		DVDPlayer dvdPlayer = appCtx.getBean(DVDPlayer.class);
+		dvdPlayer.play();
+		
+		((ConfigurableApplicationContext)appCtx).close();
+	}
+	
+	// Java Config 06 - mixing 02
+	// Java Config <- Java Config + Java Config
+	public static void testJavaConfig06() {
+		ApplicationContext appCtx = new AnnotationConfigApplicationContext(VideoSystemConfig.class);
+		
+		DVDPlayer dvdPlayer = appCtx.getBean(DVDPlayer.class);
+		dvdPlayer.play();
+		
+		((ConfigurableApplicationContext)appCtx).close();
+	}
+	
+	// Java Config 07 - mixing 03
+	// Java Config <- Java Config + XML Config
+	public static void testJavaConfig07() {
+		
+	}
+	
+	// Java Config 08 - mixing 04
+	// Java Config <- XML Config
+	public static void testJavaConfig08() {
+		
 	}
 
 }

@@ -8,7 +8,7 @@ import com.douzone.springcontainer.videosystem.DVDPlayer;
 import com.douzone.springcontainer.videosystem.DigitalVideoDisc;
 
 @Configuration
-public class DVDPlayerConfig {
+public class VideoSystemConfig {
 	
 	@Bean
 	public Avengers avengers() {
@@ -26,6 +26,7 @@ public class DVDPlayerConfig {
 //		return new DVDPlayer(dvd);
 //	}
 	
+	//프로퍼티
 	@Bean
 	public DVDPlayer dvdPlayer(DigitalVideoDisc dvd) {
 		DVDPlayer dvdPlayer = new DVDPlayer();
